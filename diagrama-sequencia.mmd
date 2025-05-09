@@ -1,0 +1,20 @@
+sequenceDiagram
+    actor User
+    participant AuthServer as AuthServer
+    participant Home as Home
+
+    
+    User ->> AuthServer: Inicia fluxo de AuthServer
+    AuthServer ->> User: Solicita desafio
+    User ->> AuthServer: Envia desafio
+    AuthServer ->> User: Retorna token
+    User ->> Home: Acessa Home
+    Home ->> AuthServer: Verifica token
+    User ->> Home: Inicia Jornada transacioanal
+    Home ->> AuthServer: Verifica permisao do token
+    AuthServer ->> User: Retorna desafio
+    User ->> AuthServer: Envia desafio
+    AuthServer ->> User: Retorna token
+    User ->> Feature Transacinal: Envia token token transacional 
+    Feature Transacinal ->> AuthServer: Verifica token
+    Feature Transacinal ->> User: Retorna efetivacao com sucesso.
